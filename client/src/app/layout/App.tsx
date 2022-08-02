@@ -8,6 +8,7 @@ import AboutPage from "../../features/About/AboutPage";
 import BasketPage from "../../features/Basket/BasketPage";
 import Catalog from "../../features/catalog/Catalog";
 import ProductDetails from "../../features/catalog/ProductDetails";
+import CheckoutPage from "../../features/checkout/CheckoutPage";
 import ContactPage from "../../features/Contact/ContactPage";
 import HomePage from "../../features/Home/HomPage";
 import agent from "../api/agent";
@@ -31,9 +32,11 @@ function App() {
       agent.Basket.get()
           .then(basket => setBasket(basket))
           .catch(error => console.log(error))
-          .finally(() => setLoading(false));
-          
+          .finally(() => setLoading(false));     
+    } else{
+      setLoading(false);
     }
+
   })
 
   const [darkMode, setDarkMode] = useState(false);
@@ -64,6 +67,7 @@ function App() {
           <Route path="/About" element={<AboutPage/>} />
           <Route path="/server-error" element={<ServerError/>} />
           <Route path="/basket" element={< BasketPage/>}/>
+          <Route path="/checkout" element={<CheckoutPage/>}/>
           <Route path="/not-found" element={<NotFound/>} />
         </Routes>
       </Container>
