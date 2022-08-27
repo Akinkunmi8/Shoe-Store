@@ -1,17 +1,17 @@
 
 import { Button, Divider, Grid, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
-import { width } from "@mui/system";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import agent from "../../app/api/agent";
 import { useStoreContext } from "../../app/context/StoreContext";
 import LoadingComponent from "../../app/layout/LoadingComponent";
 import { Product } from "../../app/models/product";
-
+import { useAppDispatch, useAppSelector } from "../../app/store/configureStore";
+import { setBasket } from "../Basket/basketSlice";
 export default function ProductDetailsPage(){
 //    use parameter to fetch data from API
-   const {basket, setBasket} = useStoreContext(); 
+   const {basket} = useAppSelector(state => state.basket);
+   const dispatch = useAppDispatch(); 
    const {id} = useParams<{id: string}>();
    const [product, setProduct] = useState<Product | null>();
    const [loading, setLoading] = useState(true);
@@ -39,13 +39,13 @@ export default function ProductDetailsPage(){
     if (!item || quantity > item.quantity){
         const updatedQuantity = item ? quantity - item.quantity : quantity ;
         agent.Basket.addItem(product?.id!, updatedQuantity)
-            .then(basket => setBasket(basket))
+            .then(basket => dispatch(setBasket(basket)))
             .catch(error => console.log(error))
             .finally(() => setSubmitting(false))
     }else {
         const updatedQuantity = item.quantity - quantity;
         agent.Basket.removeItem(product?.id!, updatedQuantity)
-            .then(() => removeItem(product?.id!, updatedQuantity))
+            .then(() => removeItem( product?.id!, updatedQuantity))
             .catch(error => console.log(error))
             .finally(()=>setSubmitting(false));
     }

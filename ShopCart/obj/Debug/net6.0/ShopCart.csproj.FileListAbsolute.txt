@@ -126,3 +126,5 @@ C:\Users\Decagon\source\repos\e-Commerce\ShopCart\obj\Debug\net6.0\refint\ShopCa
 C:\Users\Decagon\source\repos\e-Commerce\ShopCart\obj\Debug\net6.0\ShopCart.pdb
 C:\Users\Decagon\source\repos\e-Commerce\ShopCart\obj\Debug\net6.0\ShopCart.genruntimeconfig.cache
 C:\Users\Decagon\source\repos\e-Commerce\ShopCart\obj\Debug\net6.0\ref\ShopCart.dll
+C:\Users\Decagon\source\repos\e-Commerce\ShopCart\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Decagon\source\repos\e-Commerce\ShopCart\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
